@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Packaging / build artifacts (e.g. from pip-installing the vendored rasterizer)
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Compiled CUDA / C++ extensions
+*.so
+*.o
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Training / pipeline outputs
+output/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~

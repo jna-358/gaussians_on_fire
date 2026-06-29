@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ==== Page metadata (TODO: fill in description / social preview) ==== -->
+  <title>Gaussians on Fire: High-Frequency Reconstruction of Flames</title>
+  <meta name="description" content="TODO: one-sentence description of the project for search engines and link previews.">
+  <meta name="keywords" content="Gaussian Splatting, flames, fire, high-frequency reconstruction">
+
+  <!-- Open Graph / social preview (TODO: set image + url) -->
+  <meta property="og:title" content="Gaussians on Fire: High-Frequency Reconstruction of Flames">
+  <meta property="og:description" content="TODO: short description for social previews.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ==== Fonts (same set as the Nerfies template) ==== -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- ==== Styles ==== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/style.css?v=3">
+</head>
+<body>
+
+  <!-- ============================ HERO / TITLE ============================ -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+
+            <h1 class="title is-1 publication-title">
+              Gaussians on Fire:<br>High-Frequency Reconstruction of Flames
+            </h1>
+
+            <!-- ==== Authors ==== -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://orcid.org/0000-0002-6800-2462">Jakob Nazarenus</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://orcid.org/0000-0002-1621-325X">Dominik Michels</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://orcid.org/0000-0002-2374-346X">Wojtek Palubicki</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://orcid.org/0000-0002-7222-2214">Simin Kou</a><sup>4</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://orcid.org/0000-0002-8728-8726">Fang-Lue Zhang</a><sup>4</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://orcid.org/0000-0003-1937-9797">Sören Pirk</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://orcid.org/0000-0003-4398-1569">Reinhard Koch</a><sup>1</sup>
+              </span>
+            </div>
+
+            <!-- ==== Affiliations ==== -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Kiel University</span>
+              <span class="author-block"><sup>2</sup>KAUST</span>
+              <span class="author-block"><sup>3</sup>Adam Mickiewicz University</span>
+              <span class="author-block"><sup>4</sup>Victoria University of Wellington</span>
+            </div>
+
+            <!-- ==== Venue ==== -->
+            <div class="is-size-5 publication-venue">
+              <span>ECCV 2026</span>
+            </div>
+
+            <!-- ==== Action buttons ==== -->
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="#" class="external-link button is-rounded is-dark is-coming-soon" aria-disabled="true" title="Coming soon">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2511.22459" class="external-link button is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/jna-358/fire_actioncam" class="external-link button is-rounded is-dark" target="_blank" rel="noopener">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span>Data</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/jna-358/gaussians_on_fire" class="external-link button is-rounded is-dark" target="_blank" rel="noopener">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://player.mediadelivery.net/embed/692995/a853fe06-918c-4d29-9fe0-44ab3f67de44?autoplay=true" class="external-link button is-rounded is-dark" target="_blank" rel="noopener">
+                    <span class="icon"><i class="fab fa-youtube"></i></span>
+                    <span>Video</span>
+                  </a>
+                </span>
+              </div>
+              <p class="coming-soon-note">Paper, data, and code coming soon.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ TEASER ============================ -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-centered">
+        <video class="teaser-video" autoplay muted loop playsinline preload="auto">
+          <source src="./static/videos/teaser.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ ABSTRACT ============================ -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We propose a method to reconstruct dynamic fire in 3D from a limited set of
+              camera views with a Gaussian-based spatiotemporal representation. Capturing
+              and reconstructing fire and its dynamics is highly challenging due to its
+              volatile nature, transparent quality, and multitude of high-frequency
+              features. Despite these challenges, we aim to reconstruct fire from only
+              three views, which consequently requires solving for under-constrained
+              geometry. We solve this by separating the static background from the dynamic
+              fire region by combining dense multi-view stereo images with monocular depth
+              priors. The fire is initialized as a 3D flow field, obtained by fusing
+              per-view dense optical flow projections. To capture the high-frequency
+              features of fire, each 3D Gaussian encodes a lifetime and linear velocity to
+              match the dense optical flow. To ensure sub-frame temporal alignment across
+              cameras, we employ a custom hardware synchronization pattern &ndash; allowing
+              us to reconstruct fire with affordable commodity hardware. Our quantitative
+              and qualitative validations across numerous reconstruction experiments
+              demonstrate robust performance for diverse and challenging real and simulated
+              fire scenarios.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ VIDEO ============================ -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <div class="video-embed">
+            <iframe src="https://player.mediadelivery.net/embed/692995/a853fe06-918c-4d29-9fe0-44ab3f67de44?autoplay=false&loop=false&muted=true&preload=true&responsive=true" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;" allowfullscreen="true"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ METHOD ============================ -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Method</h2>
+          <figure class="figure-block">
+            <img src="./static/images/pipeline.png" alt="Pipeline overview">
+            <!-- TODO: optional caption text -->
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DATASET ============================ -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Dataset</h2>
+          <div class="placeholder-box">Coming soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CAPTURE SETUP ============================ -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Capture Setup</h2>
+          <figure class="figure-block">
+            <img src="./static/images/setup.jpg" alt="Capture setup">
+            <!-- TODO: optional caption text -->
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ RESULTS ============================ -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Baseline Comparison</h2>
+          <div class="content has-text-justified">
+            <p>
+              We compare our reconstruction against four dynamic Gaussian-splatting
+              baselines on the same captured fire sequences. Use the toggle to switch
+              between scenes.
+            </p>
+          </div>
+
+          <!-- Controls -->
+          <div class="comparison-controls" id="comparison-controls">
+            <div class="control-group" role="group" aria-label="Scene">
+              <span class="control-label">Scene</span>
+              <div class="buttons has-addons">
+                <button class="button is-small is-selected is-dark" data-scene="3_2">Scene 1</button>
+                <button class="button is-small" data-scene="4_9">Scene 2</button>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="baseline-select">Compare against</label>
+              <div class="select is-small">
+                <select id="baseline-select">
+                  <option value="4dgs_cvpr">4DGS [CVPR 24]</option>
+                  <option value="4dgs_iclr">4DGS [ICLR 24]</option>
+                  <option value="freetimegs">FreeTimeGS</option>
+                  <option value="grid4d">Grid4D</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ours vs. selected baseline (managed by static/js/index.js) -->
+          <div class="comparison-grid" id="comparison-grid">
+            <figure class="comparison-item is-ours">
+              <video data-method="ours" muted loop autoplay playsinline preload="auto"></video>
+              <figcaption>Ours</figcaption>
+            </figure>
+            <figure class="comparison-item">
+              <video id="baseline-video" muted loop autoplay playsinline preload="auto"></video>
+              <figcaption id="baseline-caption">4DGS [CVPR 24]</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CITATION ============================ -->
+  <section class="section" id="citation">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3">Citation</h2>
+      <div class="placeholder-box">Coming soon</div>
+    </div>
+  </section>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8 has-text-centered content">
+          <p>
+            Website template borrows from
+            <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+            This page is licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./static/js/index.js"></script>
+</body>
+</html>

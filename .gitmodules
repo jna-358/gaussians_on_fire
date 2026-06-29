@@ -1,0 +1,12 @@
+[submodule "src/preprocessing/Depth-Anything-V2"]
+	path = src/preprocessing/Depth-Anything-V2
+	url = https://github.com/DepthAnything/Depth-Anything-V2.git
+[submodule "src/static_scene/submodules/fused-ssim"]
+	path = src/static_scene/submodules/fused-ssim
+	url = https://github.com/rahul-goel/fused-ssim.git
+[submodule "src/static_scene/submodules/simple-knn"]
+	path = src/static_scene/submodules/simple-knn
+	url = https://gitlab.inria.fr/bkerbl/simple-knn.git
+[submodule "src/static_scene/submodules/diff-gaussian-rasterization/third_party/glm"]
+	path = src/static_scene/submodules/diff-gaussian-rasterization/third_party/glm
+	url = https://github.com/g-truc/glm.git
