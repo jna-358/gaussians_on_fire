@@ -10,9 +10,7 @@ Jakob Nazarenus, Dominik Michels, Wojtek Palubicki, Simin Kou, Fang-Lue Zhang, S
 
 </div>
 
-<div align="center">
-  <video src="https://github.com/user-attachments/assets/d253950e-4521-428d-87d2-8d844e2450d5" autoplay loop muted playsinline width="100%"></video>
-</div>
+https://github.com/user-attachments/assets/d253950e-4521-428d-87d2-8d844e2450d5
 
 This repository contains the demo code for the ECCV-26 paper *Gaussians on Fire: High-Frequency Reconstruction of Flames*.
 
