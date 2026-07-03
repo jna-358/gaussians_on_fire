@@ -6,12 +6,12 @@
 
   <!-- ==== Page metadata (TODO: fill in description / social preview) ==== -->
   <title>Gaussians on Fire: High-Frequency Reconstruction of Flames</title>
-  <meta name="description" content="TODO: one-sentence description of the project for search engines and link previews.">
+  <meta name="description" content="Gaussians on Fire -- Project Page">
   <meta name="keywords" content="Gaussian Splatting, flames, fire, high-frequency reconstruction">
 
   <!-- Open Graph / social preview (TODO: set image + url) -->
   <meta property="og:title" content="Gaussians on Fire: High-Frequency Reconstruction of Flames">
-  <meta property="og:description" content="TODO: short description for social previews.">
+  <meta property="og:description" content="Gaussians on Fire -- Project Page">
   <meta property="og:type" content="website">
   <meta property="og:url" content="">
   <meta property="og:image" content="">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/style.css?v=3">
+  <link rel="stylesheet" href="./static/css/style.css?v=5">
 </head>
 <body>
 
@@ -42,25 +42,25 @@
             <!-- ==== Authors ==== -->
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://orcid.org/0000-0002-6800-2462">Jakob Nazarenus</a><sup>1</sup>,
+                <a href="https://nazarenus.dev/">Jakob Nazarenus</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://orcid.org/0000-0002-1621-325X">Dominik Michels</a><sup>2</sup>,
+                <a href="https://www.kaust.edu.sa/en/study/faculty/dominik-michels">Dominik Michels</a><sup>2</sup>,
               </span>
               <span class="author-block">
-                <a href="https://orcid.org/0000-0002-2374-346X">Wojtek Palubicki</a><sup>3</sup>,
+                <a href="https://wp.faculty.wmi.amu.edu.pl/">Wojtek Palubicki</a><sup>3</sup>,
               </span>
               <span class="author-block">
                 <a href="https://orcid.org/0000-0002-7222-2214">Simin Kou</a><sup>4</sup>,
               </span>
               <span class="author-block">
-                <a href="https://orcid.org/0000-0002-8728-8726">Fang-Lue Zhang</a><sup>4</sup>,
+                <a href="https://people.wgtn.ac.nz/fanglue.zhang">Fang-Lue Zhang</a><sup>4</sup>,
               </span>
               <span class="author-block">
-                <a href="https://orcid.org/0000-0003-1937-9797">Sören Pirk</a><sup>1</sup>,
+                <a href="https://www.vcai-lab.org/">Sören Pirk</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://orcid.org/0000-0003-4398-1569">Reinhard Koch</a><sup>1</sup>
+                <a href="https://www.uni-kiel.de/de/person/koch-reinhard-48631">Reinhard Koch</a><sup>1</sup>
               </span>
             </div>
 
@@ -193,16 +193,38 @@
   </section>
 
   <!-- ============================ DATASET ============================ -->
-  <section class="section">
+  <section class="section" id="dataset">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Dataset</h2>
-          <div class="placeholder-box">Coming soon</div>
+          <div class="content has-text-centered">
+            <p>
+              We captured a 17-scene real-world fire dataset. Each scene consists of 3 views, captured for 5 seconds at 400 frames per second at 720p. As these scenes were captured with regular action cameras, we synchronized them visually with microsecond accuracy using our custom LED-synchronization pattern, which leverages the rolling shutter effect of the cameras to obtain near exact exposure information for each frame.
+            </p>
+          </div>
+
+          <!-- Thumbnail wall (one camera per scene) — built by static/js/index.js -->
+          <div class="dataset-grid" id="dataset-grid"></div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Dataset lightbox: synchronized 3-view triptych for the selected scene -->
+  <div class="dataset-lightbox" id="dataset-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Dataset scene viewer">
+    <button class="dataset-lb-close" id="dataset-close" type="button" aria-label="Close">&times;</button>
+    <button class="dataset-lb-nav is-prev" id="dataset-prev" type="button" aria-label="Previous scene">&#10094;</button>
+    <div class="dataset-lb-body">
+      <div class="dataset-triptych">
+        <figure><video id="lb-cam0" muted loop playsinline></video><figcaption>View 1</figcaption></figure>
+        <figure><video id="lb-cam1" muted loop playsinline></video><figcaption>View 2</figcaption></figure>
+        <figure><video id="lb-cam2" muted loop playsinline></video><figcaption>View 3</figcaption></figure>
+      </div>
+      <p class="dataset-lb-caption" id="dataset-lb-caption"></p>
+    </div>
+    <button class="dataset-lb-nav is-next" id="dataset-next" type="button" aria-label="Next scene">&#10095;</button>
+  </div>
 
   <!-- ============================ CAPTURE SETUP ============================ -->
   <section class="section">
@@ -210,9 +232,13 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Capture Setup</h2>
+          <div class="content has-text-justified">
+            <p>
+              Our real-world capture setup is shown on the left, with three GoPro Hero 13 Black facing toward our fire pit. Our custom ESP-32-based visual synchronization pattern is shown at the right. Five COB-LED strips are lit sequentially, creating the rolling shutter effect visible in the image. From this, we can derive the exact exposure interval of each frame. The coarse timing is derived from the 16 additional LEDs that continuously display an incrementing Gray code.
+            </p>
+          </div>
           <figure class="figure-block">
             <img src="./static/images/setup.jpg" alt="Capture setup">
-            <!-- TODO: optional caption text -->
           </figure>
         </div>
       </div>
@@ -223,13 +249,13 @@
   <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
-        <div class="column is-full">
+        <div class="column is-four-fifths">
           <h2 class="title is-3">Baseline Comparison</h2>
           <div class="content has-text-justified">
             <p>
               We compare our reconstruction against four dynamic Gaussian-splatting
               baselines on the same captured fire sequences. Use the toggle to switch
-              between scenes.
+              between scenes. Our method shows faithful dynamics and appearance, while the baselines suffer from severe over-smoothing, implausible dynamics, and motion artifacts.
             </p>
           </div>
 
@@ -273,9 +299,13 @@
 
   <!-- ============================ CITATION ============================ -->
   <section class="section" id="citation">
-    <div class="container is-max-desktop content">
-      <h2 class="title is-3">Citation</h2>
-      <div class="placeholder-box">Coming soon</div>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths content">
+          <h2 class="title is-3">Citation</h2>
+          <div class="placeholder-box">Coming soon</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -295,6 +325,6 @@
     </div>
   </footer>
 
-  <script src="./static/js/index.js"></script>
+  <script src="./static/js/index.js?v=3"></script>
 </body>
 </html>
