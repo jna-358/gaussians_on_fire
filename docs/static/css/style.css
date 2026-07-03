@@ -193,6 +193,169 @@ body {
   .comparison-item { flex-basis: 46%; }
 }
 
+/* ==== Dataset gallery (thumbnail wall + lightbox) ==== */
+.dataset-intro-todo {
+  color: #b06a00;
+}
+
+.dataset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.dataset-thumb {
+  position: relative;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #111;
+  aspect-ratio: 480 / 854;          /* portrait clips */
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.dataset-thumb video,
+.dataset-thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dataset-thumb:hover,
+.dataset-thumb:focus-visible {
+  transform: translateY(-2px);
+  border-color: #ff6a00;
+  box-shadow: 0 4px 14px rgba(255, 106, 0, 0.28);
+  outline: none;
+}
+
+.dataset-thumb-label {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  z-index: 1;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 1px 7px;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+/* Lightbox overlay */
+.dataset-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 1rem;
+  /* Triptych width — shared so the nav arrows can track its edges exactly. */
+  --trip-w: min(96vw, calc(72vh * 0.5625 * 3 + 1.2rem));
+}
+.dataset-lightbox[aria-hidden="true"] {
+  display: none;
+}
+
+.dataset-lb-body {
+  text-align: center;
+}
+
+.dataset-triptych {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  align-items: flex-start;
+  /* Width is whichever is smaller: the viewport, or the width three 72vh-tall
+     portrait clips need — so the triptych never overflows in either axis. */
+  width: var(--trip-w);
+  margin: 0 auto;
+}
+
+.dataset-triptych figure {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+}
+
+.dataset-triptych video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 480 / 854;
+  object-fit: cover;
+  background: #000;
+  border-radius: 6px;
+}
+
+.dataset-triptych figcaption {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.8rem;
+  color: #cfcfcf;
+  margin-top: 0.35rem;
+}
+
+.dataset-lb-caption {
+  font-family: 'Google Sans', sans-serif;
+  color: #fff;
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+}
+
+.dataset-lb-close,
+.dataset-lb-nav {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  line-height: 1;
+  transition: background 0.15s ease;
+}
+.dataset-lb-close:hover,
+.dataset-lb-nav:hover {
+  background: rgba(255, 106, 0, 0.85);
+}
+
+.dataset-lb-close {
+  top: 1rem;
+  right: 1.25rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 1.6rem;
+}
+
+.dataset-lb-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;                       /* sit above the triptych videos */
+  width: 2.8rem;
+  height: 2.8rem;
+  font-size: 1.3rem;
+  background: rgba(0, 0, 0, 0.5);   /* readable when overlaid on a bright clip */
+}
+/* Anchor the arrows to the triptych's edges, tucked fully inside with a margin,
+   so they never straddle the border no matter how wide the triptych is. */
+.dataset-lb-nav.is-prev { left: calc((100vw - var(--trip-w)) / 2 + 0.75rem); }
+.dataset-lb-nav.is-next { right: calc((100vw - var(--trip-w)) / 2 + 0.75rem); }
+
+@media (max-width: 600px) {
+  .dataset-lb-nav { width: 2.2rem; height: 2.2rem; font-size: 1rem; }
+  .dataset-triptych figcaption { font-size: 0.7rem; }
+}
+
 .footer {
   padding-top: 2rem;
   padding-bottom: 2rem;
