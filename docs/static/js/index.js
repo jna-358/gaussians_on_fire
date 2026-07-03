@@ -146,15 +146,66 @@ document.addEventListener('DOMContentLoaded', function () {
     function safePlay(v) { const p = v.play(); if (p && p.catch) p.catch(function () {}); }
 
     // --- Lightbox ---
+    let loadToken = 0;   // invalidates pending loads when the user navigates on
+
+    // Resolves once the video has buffered enough to play (or errored/stalled,
+    // so one bad file can't wedge the lightbox).
+    function whenReady(v) {
+      return new Promise(function (resolve) {
+        if (v.readyState >= 3) { resolve(); return; }
+        let timer = null;
+        function done() {
+          clearTimeout(timer);
+          v.removeEventListener('canplay', done);
+          v.removeEventListener('error', done);
+          resolve();
+        }
+        v.addEventListener('canplay', done);
+        v.addEventListener('error', done);
+        timer = setTimeout(done, 8000);
+      });
+    }
+
+    // Resolves once playback has actually begun rendering frames, so the
+    // placeholders never uncover a stalled or still-black view.
+    function whenPlaying(v) {
+      return new Promise(function (resolve) {
+        let timer = null;
+        function done() {
+          clearTimeout(timer);
+          v.removeEventListener('playing', done);
+          resolve();
+        }
+        v.addEventListener('playing', done);
+        timer = setTimeout(done, 1000);
+      });
+    }
+
     function loadScene() {
       const sc = SCENES[current];
+      const token = ++loadToken;
+      lightbox.classList.add('is-loading');
       lbVideos.forEach(function (v, k) {
-        v.poster = posterPath(sc.n, k);   // paint a frame instantly, no black flash
+        // No poster here: the video paints its own first frame once decoded,
+        // so the dimmed still matches frame 0 exactly and playback starts
+        // without a content jump.
+        v.preload = 'auto';
         v.src = sc.cams[k];
         v.load();
       });
-      playAll();
       if (lbCaption) lbCaption.textContent = 'Scene ' + sc.n + ' / ' + SCENES.length;
+
+      // Hold playback until all three views are buffered, start them together
+      // behind the placeholders, and only then reveal — so the crossfade
+      // uncovers videos that are already in motion.
+      Promise.all(lbVideos.map(whenReady)).then(function () {
+        if (token !== loadToken || !isOpen()) return;
+        playAll();
+        return Promise.all(lbVideos.map(whenPlaying)).then(function () {
+          if (token !== loadToken || !isOpen()) return;
+          lightbox.classList.remove('is-loading');
+        });
+      });
     }
 
     function playAll() {
@@ -189,7 +240,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function closeLightbox() {
+      loadToken++;   // cancel any in-flight scene load
       lightbox.setAttribute('aria-hidden', 'true');
+      lightbox.classList.remove('is-loading');
       document.body.style.overflow = '';
       stopDriftSync();
       lbVideos.forEach(function (v) { v.pause(); v.removeAttribute('src'); v.load(); });
