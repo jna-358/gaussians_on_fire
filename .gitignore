@@ -28,3 +28,6 @@ output/
 Thumbs.db
 *.swp
 *~
+
+# Large dataset
+fire_dataset
