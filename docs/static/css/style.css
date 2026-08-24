@@ -85,7 +85,7 @@ body {
   background: #fafafa;
 }
 
-/* Responsive 16:9 embed (e.g. Bunny Stream iframe) — mirrors .teaser-video. */
+/* Responsive 16:9 embed (e.g. YouTube iframe) — mirrors .teaser-video. */
 .video-embed {
   position: relative;
   width: 100%;
