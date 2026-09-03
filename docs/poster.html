@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gaussians on Fire — Poster Loop</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+    body { display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    video { width: 100vw; height: 100vh; object-fit: contain; background: #000; outline: none; }
+    #hint {
+      position: fixed; left: 50%; bottom: 6vh; transform: translateX(-50%);
+      padding: .5em 1em; border-radius: 999px;
+      font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #ddd; background: rgba(0,0,0,.6); pointer-events: none;
+      transition: opacity .6s ease; opacity: 1;
+    }
+    #hint.is-hidden { opacity: 0; }
+    :fullscreen video { cursor: none; }
+  </style>
+</head>
+<body>
+  <!--
+    Poster-session loop (ECCV 2026). Videos are hosted on Cloudflare R2; the browser
+    picks the first source it can decode (AV1 -> HEVC -> H.264). Muted autoplay is
+    required by all browsers for autoplay without a user gesture.
+  -->
+  <video id="loop" autoplay muted loop playsinline preload="auto">
+    <source src="https://r2.nazarenus.dev/gaussians_on_fire_poster_loop_av1.mp4"  type='video/mp4; codecs="av01.0.08M.08"'>
+    <source src="https://r2.nazarenus.dev/gaussians_on_fire_poster_loop_hevc.mp4" type='video/mp4; codecs="hvc1"'>
+    <source src="https://r2.nazarenus.dev/gaussians_on_fire_poster_loop_h264.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+    <a href="https://r2.nazarenus.dev/gaussians_on_fire_poster_loop_h264.mp4">Download the H.264 file.</a>
+  </video>
+  <div id="hint">Click or press <b>F</b> for fullscreen · <b>Esc</b> to exit</div>
+
+  <script>
+    (function () {
+      var video = document.getElementById('loop');
+      var hint = document.getElementById('hint');
+
+      function toggleFullscreen() {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else {
+          var el = document.documentElement;
+          var req = el.requestFullscreen || el.webkitRequestFullscreen;
+          if (req) { req.call(el); }
+          else if (video.webkitEnterFullscreen) { video.webkitEnterFullscreen(); } // iOS Safari
+        }
+      }
+
+      document.body.addEventListener('click', toggleFullscreen);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFullscreen(); }
+        if (e.key === ' ') { e.preventDefault(); video.paused ? video.play() : video.pause(); }
+      });
+
+      // Some browsers pause looping media after a decode hiccup; make sure it keeps going.
+      video.addEventListener('ended', function () { video.currentTime = 0; video.play(); });
+      video.addEventListener('pause', function () {
+        if (!document.hidden && !video.ended) { setTimeout(function () { video.play().catch(function () {}); }, 1500); }
+      });
+
+      // Fade the hint after a few seconds; show it again briefly on fullscreen change.
+      var hideTimer;
+      function showHint() {
+        hint.classList.remove('is-hidden');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () { hint.classList.add('is-hidden'); }, 4000);
+      }
+      showHint();
+      document.addEventListener('fullscreenchange', showHint);
+    })();
+  </script>
+</body>
+</html>

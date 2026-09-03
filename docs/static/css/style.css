@@ -103,6 +103,18 @@ body {
   height: 100%;
   border: 0;
 }
+/* Discreet secondary link under the video embed (e.g. poster-session loop). */
+.video-aside {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+}
+.video-aside a {
+  color: #909090;
+}
+.video-aside a:hover {
+  color: #363636;
+  text-decoration: underline;
+}
 
 .figure-block {
   margin: 0;
