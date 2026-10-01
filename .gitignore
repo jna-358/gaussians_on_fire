@@ -31,3 +31,6 @@ Thumbs.db
 
 # Large dataset
 fire_dataset
+
+# Demo input videos (downloaded by download_data.sh)
+data/input_video/*.mkv

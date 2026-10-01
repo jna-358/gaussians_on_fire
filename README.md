@@ -15,15 +15,16 @@ https://github.com/user-attachments/assets/d253950e-4521-428d-87d2-8d844e2450d5
 This repository contains the demo code for the ECCV-26 paper *Gaussians on Fire: High-Frequency Reconstruction of Flames*.
 
 ## Getting Started
-To setup the required environment, we provide the installation script `install.sh`. It creates a conda environemnt called `gaussians_on_fire`. To execute all stages of the pipeline sequentially, there is the python script `run.py`. In summary, run the following commands to execute the project:
+To setup the required environment, we provide the installation script `install.sh`. It creates a conda environment called `gaussians_on_fire`. To execute all stages of the pipeline sequentially, there is the python script `run.py`. In summary, run the following commands to execute the project:
 ~~~{bash}
 bash install.sh
+bash download_data.sh
 conda activate gaussians_on_fire
 python run.py
 ~~~
 
 ## Data
-We provide a single scene within this supplementary material. The videos are stored within the `data/input_video` directory. For each `.mkv` video file, there is a corresponding `.json` file that holds its metadata. Additionally, `data/calibration` contains per-camera calibration data and `data/time_range` contains a pre-selected time range to be used for reconstruction.
+We provide a single scene within this supplementary material. The videos are downloaded into the `data/input_video` directory by `download_data.sh`. For each `.mkv` video file, there is a corresponding `.json` file that holds its metadata. Additionally, `data/calibration` contains per-camera calibration data and `data/time_range` contains a pre-selected time range to be used for reconstruction.
 
 ## Pipeline
 1. Detect the synchronization pattern
