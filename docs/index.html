@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- ==== Page metadata (TODO: fill in description / social preview) ==== -->
+  <!-- ==== Page metadata ==== -->
   <title>Gaussians on Fire: High-Frequency Reconstruction of Flames</title>
-  <meta name="description" content="Gaussians on Fire -- Project Page">
+  <meta name="description" content="&quot;Gaussians on Fire&quot; reconstructs photorealistic fire scenes from three consumer cameras, achieving visually accurate and physically plausible results.">
   <meta name="keywords" content="Gaussian Splatting, flames, fire, high-frequency reconstruction">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
 
-  <!-- Open Graph / social preview (TODO: set image + url) -->
+  <!-- Open Graph / social preview -->
   <meta property="og:title" content="Gaussians on Fire: High-Frequency Reconstruction of Flames">
-  <meta property="og:description" content="Gaussians on Fire -- Project Page">
+  <meta property="og:description" content="&quot;Gaussians on Fire&quot; reconstructs photorealistic fire scenes from three consumer cameras, achieving visually accurate and physically plausible results.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+  <meta property="og:url" content="https://jna-358.github.io/gaussians_on_fire/">
+  <meta property="og:image" content="https://r2.nazarenus.dev/gaussians_on_fire/docs/images/social_preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- ==== Fonts (same set as the Nerfies template) ==== -->
@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/style.css?v=6">
+  <link rel="stylesheet" href="./static/css/style.css?v=7">
 </head>
 <body>
 
@@ -111,8 +111,13 @@
                     <span>Video</span>
                   </a>
                 </span>
+                <span class="link-block">
+                  <a href="https://fire.nazarenus.dev" class="external-link button is-rounded is-dark" target="_blank" rel="noopener">
+                    <span class="icon"><i class="fas fa-fire"></i></span>
+                    <span>Demo</span>
+                  </a>
+                </span>
               </div>
-              <p class="coming-soon-note">Paper, data, and code coming soon.</p>
             </div>
 
           </div>
@@ -126,7 +131,7 @@
     <div class="container is-max-desktop">
       <div class="hero-body has-text-centered">
         <video class="teaser-video" autoplay muted loop playsinline preload="auto">
-          <source src="./static/videos/teaser.mp4" type="video/mp4">
+          <source src="https://r2.nazarenus.dev/gaussians_on_fire/docs/videos/teaser.mp4" type="video/mp4">
         </video>
       </div>
     </div>
@@ -173,7 +178,6 @@
           <div class="video-embed">
             <iframe src="https://www.youtube.com/embed/wXeomgdm5xI" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
-          <!-- Internal: looping clip shown on the monitor during the ECCV poster session. -->
           <p class="video-aside">
             <a href="./poster.html" target="_blank" rel="noopener">
               <span class="icon is-small"><i class="fas fa-expand"></i></span>
@@ -193,7 +197,6 @@
           <h2 class="title is-3">Method</h2>
           <figure class="figure-block">
             <img src="./static/images/pipeline.png" alt="Pipeline overview">
-            <!-- TODO: optional caption text -->
           </figure>
         </div>
       </div>

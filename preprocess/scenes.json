@@ -1,0 +1,70 @@
+{
+  "001": {
+    "name": "fire_03_new_0001",
+    "start_frame": 315
+  },
+  "002": {
+    "name": "fire_03_new_0002",
+    "start_frame": 257
+  },
+  "003": {
+    "name": "fire_03_new_0003",
+    "start_frame": 136
+  },
+  "004": {
+    "name": "fire_03_new_0004",
+    "start_frame": 38
+  },
+  "005": {
+    "name": "fire_03_new_0005",
+    "start_frame": 47
+  },
+  "006": {
+    "name": "fire_03_new_0006",
+    "start_frame": 625
+  },
+  "007": {
+    "name": "fire_04_0001",
+    "start_frame": 1961
+  },
+  "008": {
+    "name": "fire_04_0002",
+    "start_frame": 402
+  },
+  "009": {
+    "name": "fire_04_0003",
+    "start_frame": 744
+  },
+  "010": {
+    "name": "fire_04_0005",
+    "start_frame": 133
+  },
+  "011": {
+    "name": "fire_04_0006",
+    "start_frame": 1299
+  },
+  "012": {
+    "name": "fire_04_0007",
+    "start_frame": 225
+  },
+  "013": {
+    "name": "fire_04_0008",
+    "start_frame": 146
+  },
+  "014": {
+    "name": "fire_04_0009",
+    "start_frame": 649
+  },
+  "015": {
+    "name": "fire_04_0010",
+    "start_frame": 885
+  },
+  "016": {
+    "name": "fire_05_0003",
+    "start_frame": 138
+  },
+  "017": {
+    "name": "fire_05_0006",
+    "start_frame": 171
+  }
+}

@@ -1,0 +1,8 @@
+.git
+.venv
+data
+output
+**/__pycache__
+**/*.egg-info
+submodules/*/build
+*.log

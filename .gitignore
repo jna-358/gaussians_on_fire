@@ -2,8 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.ruff_cache/
 
-# Packaging / build artifacts (e.g. from pip-installing the vendored rasterizer)
+# Packaging / build artifacts (e.g. from building the vendored CUDA extensions)
 build/
 dist/
 *.egg-info/
@@ -20,8 +21,8 @@ venv/
 env/
 ENV/
 
-# Training / pipeline outputs
-output/
+# Dataset, preprocessing and training outputs (data/hf, data/work, data/bundles, data/output, data/cache)
+data/
 
 # OS / editor cruft
 .DS_Store
@@ -29,5 +30,3 @@ Thumbs.db
 *.swp
 *~
 
-# Large dataset
-fire_dataset

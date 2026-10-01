@@ -1,0 +1,7 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# Rebuild whenever any CUDA/C++ source changes, not only setup.py.
+[tool.uv]
+cache-keys = [{ file = "setup.py" }, { file = "pyproject.toml" }, { file = "**/*.cu" }, { file = "**/*.cpp" }, { file = "**/*.h" }]

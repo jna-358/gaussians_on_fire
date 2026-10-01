@@ -45,13 +45,6 @@ body {
   pointer-events: none;
 }
 
-.coming-soon-note {
-  margin-top: 0.75rem;
-  color: #888;
-  font-style: italic;
-  font-size: 0.9rem;
-}
-
 .teaser {
   font-family: 'Google Sans', sans-serif;
   padding-top: 0;

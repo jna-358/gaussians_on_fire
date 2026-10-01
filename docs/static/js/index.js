@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const grid = document.getElementById('comparison-grid');
   const controls = document.getElementById('comparison-controls');
   if (grid && controls) {
-    const VIDEO_DIR = './static/videos/';
+    const VIDEO_DIR = 'https://r2.nazarenus.dev/gaussians_on_fire/docs/videos/';
     const oursVideo = grid.querySelector('[data-method="ours"]');
     const baseVideo = document.getElementById('baseline-video');
     const baseCaption = document.getElementById('baseline-caption');
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const dgrid = document.getElementById('dataset-grid');
   const lightbox = document.getElementById('dataset-lightbox');
   if (dgrid && lightbox) {
-    const GAL = './static/videos/gallery/';
+    const GAL = 'https://r2.nazarenus.dev/gaussians_on_fire/docs/videos/gallery/';
     const SCENES = [
       { n: 1, cams: [GAL + 'capture_03/scene_0001/cam_0.mp4', GAL + 'capture_03/scene_0001/cam_1.mp4', GAL + 'capture_03/scene_0001/cam_2.mp4'] },
       { n: 2, cams: [GAL + 'capture_03/scene_0002/cam_0.mp4', GAL + 'capture_03/scene_0002/cam_1.mp4', GAL + 'capture_03/scene_0002/cam_2.mp4'] },
