@@ -18,6 +18,20 @@ This repository contains code for the ECCV 2026 paper *Gaussians on Fire: High-F
 ## Demo
 We provide an interactive demo [here](https://fire.nazarenus.dev). It shows all 17 reconstructed scenes, rendered client-side (WEBGL2 required).
 
+## BibTeX
+~~~bibtex
+@InProceedings{10.1007/978-3-032-37152-2_25,
+  author    = {Nazarenus, Jakob and Michels, Dominik and Palubicki, Wojtek and Kou, Simin and Zhang, Fang-Lue and Pirk, S{\"o}ren and Koch, Reinhard},
+  title     = {Gaussians on Fire: High-Frequency Reconstruction of Flames},
+  booktitle = {Computer Vision -- ECCV 2026},
+  year      = {2026},
+  publisher = {Springer Nature Switzerland},
+  address   = {Cham},
+  pages     = {454--476},
+  isbn      = {978-3-032-37152-2}
+}
+~~~
+
 ## Requirements
 - Linux x86_64
 - A CUDA-capable GPU (compute capability 7.5 and newer) with recent drivers

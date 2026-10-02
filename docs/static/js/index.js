@@ -1,19 +1,6 @@
 // ==== Gaussians on Fire — project page scripts ====
-// Placeholder for interactive behavior (carousels, video controls, etc.).
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Bulma navbar burger toggle (kept here for when a navbar is added).
-  const burgers = Array.prototype.slice.call(
-    document.querySelectorAll('.navbar-burger'), 0
-  );
-  burgers.forEach(function (el) {
-    el.addEventListener('click', function () {
-      const target = document.getElementById(el.dataset.target);
-      el.classList.toggle('is-active');
-      if (target) target.classList.toggle('is-active');
-    });
-  });
-
   // ==== Baseline comparison: scene / modality toggles + synced playback ====
   const grid = document.getElementById('comparison-grid');
   const controls = document.getElementById('comparison-controls');

@@ -38,13 +38,6 @@ body {
   margin: 0.25rem;
 }
 
-/* Actions that aren't available yet */
-.button.is-coming-soon {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
 .teaser {
   font-family: 'Google Sans', sans-serif;
   padding-top: 0;
@@ -65,17 +58,13 @@ body {
   border-radius: 8px;
 }
 
-/* Placeholder boxes for not-yet-added content. Remove as sections are filled. */
-.placeholder-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  border: 2px dashed #c0c0c0;
-  border-radius: 8px;
-  color: #909090;
-  font-style: italic;
-  background: #fafafa;
+/* BibTeX citation block */
+.bibtex {
+  text-align: left;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: pre;
+  overflow-x: auto;
 }
 
 /* Responsive 16:9 embed (e.g. YouTube iframe) — mirrors .teaser-video. */
